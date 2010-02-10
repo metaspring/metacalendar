@@ -9,11 +9,11 @@ Example
 =======
 
 <% calendar do |date| %>
-	events = @events.select { |event| event.day == date }
+  <% events = @events.select { |event| event.day == date } %>
 
-	events.each do |event|
+	<% events.each do |event| %>
 		<p><%= event.title %></p>
-	end
+	<% end %>
 <% end %>
 
 The calendar method can also take a date:
