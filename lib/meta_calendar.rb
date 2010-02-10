@@ -16,15 +16,15 @@ module MetaCalendar
 		<th colspan="7">
     	<div id="month-container">
         #{link_to "&laquo;", 
-                  url.merge { :year  => prev_month.year,
-                              :month => prev_month.month },
+                  url.merge( { :year  => prev_month.year,
+                               :month => prev_month.month }),
                   :id => "previous_month" }
 
         <h2 id="current_month">#{month_name(first_day.month)}</h2>
         
         #{link_to "&raquo;", 
-                  url.merge { :year  => next_month.year,
-                              :month => next_month.month },
+                  url.merge( { :year  => next_month.year,
+                               :month => next_month.month }),
                   :id => "next_month" }
         <br class="clearer" />
       </div>
