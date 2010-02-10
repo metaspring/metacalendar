@@ -1,4 +1,4 @@
-Metacalendar
+MetaCalendar
 ============
 
 Provides a calendar method which takes a date and displays a calendar for the date's month. If no date is provided, the url parameters are checked for :year and :month and parsed to show the calendar for that month. 
