@@ -20,7 +20,7 @@ module MetaCalendar
                                :month => prev_month.month }),
                   :id => "previous_month" }
 
-        <h2 id="current_month">#{month_name(first_day.month)}</h2>
+        <h2 id="current_month">#{month_name(first_day.month)} #{first_day.year}</h2>
         
         #{link_to "&raquo;", 
                   url.merge( { :year  => next_month.year,
