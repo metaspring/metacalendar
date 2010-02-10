@@ -1,12 +1,7 @@
 module MetaCalendar
-  # Display month for date if given
-  #   else set date to year and month from url parameters if available
-  #   else use today's date
-  def calendar( date = ((params[:year] && params[:month]) ? 
-                          Date.parse("#{params[:year]}-#{sprintf('%02d',
-                                                         params[:month])}-01") :
-                          Date.today), 
-                &block )
+  def calendar(options, &block)
+    date = parse_date_or_default(options)
+    url  = parse_url_or_default(options)
 
     first_day = Date.parse "#{date.year}-#{date.month}-01"
     last_day = Date.new( first_day.year, first_day.month, -1)
@@ -20,15 +15,17 @@ module MetaCalendar
   <tr>
 		<th colspan="7">
     	<div id="month-container">
-        <a id="previous_month" 
-           href="/calendar?year=#{prev_month.year}&month=#{prev_month.month}">
-          &laquo;
-        </a> 
-        <h2>#{month_name(first_day.month)}</h2>
-        <a id="next_month" 
-           href="/calendar?year=#{next_month.year}&month=#{next_month.month}">
-          &raquo;
-        </a> 
+        #{link_to "&laquo;", 
+                  url.merge { :year  => prev_month.year,
+                              :month => prev_month.month },
+                  :id => "previous_month" }
+
+        <h2 id="current_month">#{month_name(first_day.month)}</h2>
+        
+        #{link_to "&raquo;", 
+                  url.merge { :year  => next_month.year,
+                              :month => next_month.month },
+                  :id => "next_month" }
         <br class="clearer" />
       </div>
     </th>
@@ -66,6 +63,22 @@ EOF
 
     cal << "</table>"
     concat cal 
+  end
+
+  def parse_date_or_default(options)
+    if options[:date]
+      options[:date]
+    else
+      if params[:year] && params[:month]
+        Date.parse("#{params[:year]}-#{sprintf('%02d', params[:month])}-01")
+      else
+        Date.today
+      end
+    end
+  end
+
+  def parse_url_or_default(options)
+    options[:url] ? options[:url] : { :controller => 'calendar' }
   end
 
   def month_name(num)
