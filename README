@@ -1,0 +1,24 @@
+Metacalendar
+============
+
+Provides a calendar method which takes a date and displays a calendar for the date's month. If no date is provided, the url parameters are checked for :year and :month and parsed to show the calendar for that month. 
+
+Each calendar day's date can be used within a block to display custom content for each day.
+
+
+Example
+=======
+
+<% calendar do |date| %>
+	events = @events.select { |event| event.day == date }
+
+	events.each do |event|
+		<p><%= event.title %></p>
+	end
+<% end %>
+
+The calendar method can also take a date:
+
+<% calendar(Date.today << 1) %>
+
+Copyright (c) 2010 John Ku, MetaSpring, LLC., released under the MIT license
