@@ -5,6 +5,11 @@ Provides a calendar method which takes a date and displays a calendar for the da
 
 Each calendar day's date can also be used within a block to display custom content for that day.
 
+Install
+=======
+
+script/plugin install git://github.com/metaspring/metacalendar.git
+
 Examples
 ========
 
