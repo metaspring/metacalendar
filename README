@@ -25,9 +25,11 @@ Examples
 	<% end %>
 <% end %>
 
+
 The calendar method can also take a date to display that day's month:
 
 	<% calendar(:date => (Date.today + 90)) %>
+
 
 By default, the next and previous month links are generated assuming a calendar controller is being used but a different url hash can also be passed:
 
