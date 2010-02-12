@@ -26,7 +26,6 @@ module MetaCalendar
                   url.merge( { :year  => next_month.year,
                                :month => next_month.month }),
                   :id => "next_month" }
-        <br class="clearer" />
       </div>
     </th>
   </tr>
