@@ -34,6 +34,7 @@ The calendar method can also take a date to display that day's month:
 By default, the next and previous month links are generated assuming a calendar controller is being used but a different url hash can also be passed:
 
 	<% calendar(:url => { :controller => :events }) do |date| %>
+		<%# ... %>
 	<% end %>
 
 Copyright (c) 2010 John Ku, MetaSpring, LLC., released under the MIT license
